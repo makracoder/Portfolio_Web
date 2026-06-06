@@ -12,7 +12,7 @@ desc:"Rating 1250+ | Pupil",
 link:"https://codeforces.com/profile/hunter_148"
 },
 {
-title:"Codelio",
+title:"Codolio",
 desc:"Code Quality & Performance",
 link:"https://codolio.com/profile/hunter_148"
 }
