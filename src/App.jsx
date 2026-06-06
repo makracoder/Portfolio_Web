@@ -14,7 +14,7 @@ return(
 
 <Navbar/>
 
-<main className="container-main pt-14 md:pt-20 pb-12 md:pb-16 space-y-28 md:space-y-36">
+<main className="container-main pt-20 md:pt-32 pb-12 md:pb-16 space-y-32 md:space-y-40">
 
   <Hero/>
 

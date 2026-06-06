@@ -7,12 +7,12 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 glass border-b border-green-500/30">
       <div className="container-main py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold glow">
+        <h1 className="text-2xl font-bold glow m-0">
           {'< Adi.dev />'}
         </h1>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-gray-300">
+        <div className="hidden md:flex gap-12 text-gray-300">
           <a href="#" className="hover:text-green-400 transition relative group">
             Home
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
@@ -55,17 +55,17 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden border-t border-green-500/20">
-        <div className="container-main mt-3 flex flex-col gap-3 glass p-4 rounded-b-lg">
-          <a href="#" className="text-green-400">Home</a>
-          <a href="#about" className="text-green-400">About</a>
-          <a href="#skills" className="text-green-400">Skills</a>
-          <a href="#projects" className="text-green-400">Projects</a>
-          <a href="#contact" className="text-green-400">Contact</a>
+        <div className="container-main py-4 flex flex-col gap-4 glass p-4 rounded-b-lg">
+          <a href="#" className="text-green-400 py-2">Home</a>
+          <a href="#about" className="text-green-400 py-2">About</a>
+          <a href="#skills" className="text-green-400 py-2">Skills</a>
+          <a href="#projects" className="text-green-400 py-2">Projects</a>
+          <a href="#contact" className="text-green-400 py-2">Contact</a>
           <a
             href="https://github.com/makracoder"
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-btn text-center"
+            className="neon-btn text-center py-2 mt-2"
           >
             GitHub
           </a>

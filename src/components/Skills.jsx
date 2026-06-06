@@ -18,15 +18,15 @@ return(
 
 <section id="skills" className="section">
 
-<div className="w-full max-w-5xl mx-auto">
+<div className="w-full max-w-5xl mx-auto px-4 sm:px-0">
 
-<h2 className="text-center mb-4 glow">
+<h2 className="text-center mb-6 glow">
 
 Skills & Technologies
 
 </h2>
 
-<p className="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
+<p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
 Tools and technologies I use to build modern, reliable web experiences.
 </p>
 

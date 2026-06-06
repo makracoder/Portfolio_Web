@@ -34,9 +34,9 @@ export default function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
 
-      <div className="w-full max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10 px-2 sm:px-0">
+      <div className="w-full max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10 px-4 sm:px-6">
         {/* Text Content */}
-        <motion.div className="space-y-6" variants={itemVariants}>
+        <motion.div className="space-y-8" variants={itemVariants}>
           <motion.div variants={itemVariants}>
             <p className="text-green-400 font-semibold text-xs sm:text-sm mb-2 tracking-wide uppercase">Welcome to my portfolio</p>
             <h1>
@@ -59,7 +59,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div 
-            className="flex gap-4 flex-wrap pt-4"
+            className="flex gap-6 flex-wrap pt-8"
             variants={itemVariants}
           >
             <a
@@ -77,7 +77,7 @@ export default function Hero() {
               <FaCode /> View Work
             </a>
             <a
-              href="/Agres.pdf"
+              href="public/Aditya's Resume (2).pdf"
               download
               className="neon-btn"
             >

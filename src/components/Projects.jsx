@@ -25,43 +25,43 @@ return(
 
 <section id="projects" className="section">
 
-<div className="w-full max-w-6xl mx-auto">
+<div className="w-full max-w-6xl mx-auto px-4 sm:px-0">
 
-<h2 className="text-center mb-4 glow">
+<h2 className="text-center mb-6 glow">
 
 Projects
 
 </h2>
 
-<p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-Some of the products and experiments I’ve been building recently.
+<p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+Some of the products and experiments I've been building recently.
 </p>
 
-<div className="grid md:grid-cols-3 gap-8 md:gap-10">
+<div className="grid md:grid-cols-3 gap-8">
 
 {projects.map((p,i)=>(
 <div
 key={i}
-className="card glow-border hover-lift h-full flex flex-col gap-5"
+className="card glow-border hover-lift h-full flex flex-col gap-6"
 >
 
-<h3 className="text-xl md:text-2xl font-semibold mb-1">
+<h3 className="text-xl md:text-2xl font-semibold mb-0">
 
 {p.name}
 
 </h3>
 
-<p className="text-gray-400 text-sm md:text-base mb-4 flex-grow">
+<p className="text-gray-400 text-sm md:text-base mb-0 flex-grow">
 
 {p.desc}
 
 </p>
 
-<div className="flex gap-4 text-green-400 font-semibold text-sm md:text-base">
+<div className="flex gap-8 text-green-400 font-semibold text-sm md:text-base pt-4 border-t border-green-500/20">
 
-<a href={p.live}>Live</a>
+<a href={p.live} className="hover:text-green-300 transition">Live</a>
 
-<a href={p.github}>GitHub</a>
+<a href={p.github} className="hover:text-green-300 transition">GitHub</a>
 
 </div>
 
@@ -70,7 +70,7 @@ className="card glow-border hover-lift h-full flex flex-col gap-5"
 
 </div>
 
-<div className="flex justify-center mt-10">
+<div className="flex justify-center mt-16">
 
 <a
 href="https://github.com/makracoder"
