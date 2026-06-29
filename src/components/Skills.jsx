@@ -1,60 +1,71 @@
-import { FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaJava, FaJs } from "react-icons/fa"
-import { SiCplusplus, SiPostman } from "react-icons/si"
+import { motion } from "framer-motion";
+import SectionHeader from "./SectionHeader";
+import { fadeUp, staggerContainer, viewportOnce } from "../hooks/useScrollReveal";
 
-export default function Skills(){
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["C++", "Java", "JavaScript"],
+  },
+  {
+    title: "Frontend",
+    skills: ["HTML", "CSS", "React.js", "Tailwind CSS"],
+  },
+  {
+    title: "Backend",
+    skills: ["Node.js", "Express.js"],
+  },
+  {
+    title: "Database",
+    skills: ["MongoDB"],
+  },
+  {
+    title: "Core CS",
+    skills: ["Data Structures & Algorithms", "OOP", "Operating Systems"],
+  },
+  {
+    title: "Web/Concepts",
+    skills: ["RESTful APIs", "JWT Authentication", "JSON"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Postman", "VS Code", "Render", "Vercel"],
+  },
+];
 
-const skills=[
-{icon:<SiCplusplus size={50}/>,name:"C++"},
-{icon:<FaJava size={50}/>,name:"Java"},
-{icon:<FaJs size={50}/>,name:"JavaScript"},
-{icon:<FaReact size={50}/>,name:"React"},
-{icon:<FaHtml5 size={50}/>,name:"HTML"},
-{icon:<FaCss3Alt size={50}/>,name:"CSS"},
-{icon:<FaGitAlt size={50}/>,name:"Git"},
-{icon:<SiPostman size={50}/>,name:"Postman"},
-]
+export default function Skills() {
+  return (
+    <section id="skills" className="section">
+      <SectionHeader
+        title="Skills & Technologies"
+        glow
+        description="Tools and technologies I use to build modern, reliable web experiences."
+      />
 
-return(
-
-<section id="skills" className="section">
-
-<div className="w-full max-w-5xl mx-auto px-4 sm:px-0">
-
-<h2 className="text-center mb-6 glow">
-
-Skills & Technologies
-
-</h2>
-
-<p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-Tools and technologies I use to build modern, reliable web experiences.
-</p>
-
-<div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-
-{skills.map((skill,i)=>(
-<div
-key={i}
-className="card glow-border hover-lift flex flex-col items-center gap-4 cursor-pointer group"
->
-
-<div className="text-green-400 text-5xl md:text-6xl group-hover:text-green-300 transition-colors">
-{skill.icon}
-</div>
-
-<p className="text-gray-300 font-semibold text-center text-sm md:text-base group-hover:text-green-400 transition-colors">
-{skill.name}
-</p>
-
-</div>
-))}
-
-</div>
-
-</div>
-
-</section>
-
-)
-
+      <motion.div
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        variants={staggerContainer}
+      >
+        {skillCategories.map((category) => (
+          <motion.div
+            key={category.title}
+            className="card-static flex flex-col h-full"
+            variants={fadeUp}
+          >
+            <h3 className="skill-category-title">{category.title}</h3>
+            <div className="skill-tags">
+              {category.skills.map((skill) => (
+                <span key={skill} className="skill-tag">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
+  );
 }

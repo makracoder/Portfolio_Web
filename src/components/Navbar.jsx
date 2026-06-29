@@ -1,75 +1,79 @@
 import { useState } from "react";
 import { FaGithub, FaBars, FaTimes } from "react-icons/fa";
 
+const navLinks = [
+  { href: "#", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const closeMenu = () => setIsOpen(false);
+
   return (
-    <nav className="sticky top-0 z-50 glass border-b border-green-500/30">
-      <div className="container-main py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold glow m-0">
-          {'< Adi.dev />'}
-        </h1>
+    <nav className="sticky top-0 z-50 glass">
+      <div className="container-main flex items-center justify-between h-16">
+        <a href="#" className="text-mono text-lg font-semibold glow m-0 tracking-tight">
+          {"< Adi.dev />"}
+        </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-12 text-gray-300">
-          <a href="#" className="hover:text-green-400 transition relative group">
-            Home
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#about" className="hover:text-green-400 transition relative group">
-            About
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#skills" className="hover:text-green-400 transition relative group">
-            Skills
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#projects" className="hover:text-green-400 transition relative group">
-            Projects
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#contact" className="hover:text-green-400 transition relative group">
-            Contact
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-          </a>
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="nav-link">
+              {link.label}
+            </a>
+          ))}
           <a
             href="https://github.com/makracoder"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 neon-btn text-sm"
+            className="btn btn-secondary"
           >
-            <FaGithub /> GitHub
+            <FaGithub size={15} />
+            GitHub
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-green-400 text-2xl"
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-accent transition-colors hover:bg-[var(--neon-muted)]"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          {isOpen ? <FaTimes /> : <FaBars />}
+          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-green-500/20">
-        <div className="container-main py-4 flex flex-col gap-4 glass p-4 rounded-b-lg">
-          <a href="#" className="text-green-400 py-2">Home</a>
-          <a href="#about" className="text-green-400 py-2">About</a>
-          <a href="#skills" className="text-green-400 py-2">Skills</a>
-          <a href="#projects" className="text-green-400 py-2">Projects</a>
-          <a href="#contact" className="text-green-400 py-2">Contact</a>
-          <a
-            href="https://github.com/makracoder"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="neon-btn text-center py-2 mt-2"
-          >
-            GitHub
-          </a>
-        </div>
+        <div className="md:hidden border-t border-[var(--border)]">
+          <div className="container-main py-4 flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="px-3 py-3 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--neon-muted)] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="https://github.com/makracoder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary mt-2 justify-center"
+              onClick={closeMenu}
+            >
+              <FaGithub size={15} />
+              GitHub
+            </a>
+          </div>
         </div>
       )}
     </nav>

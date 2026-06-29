@@ -1,68 +1,55 @@
-export default function Stats(){
+import { motion } from "framer-motion";
+import SectionHeader from "./SectionHeader";
+import { fadeUp, staggerContainer, viewportOnce } from "../hooks/useScrollReveal";
 
-const stats=[
-{
-title:"LeetCode",
-desc:"Rating 1850+ | 1400+ problems",
-link:"https://leetcode.com/u/hunter_148"
-},
-{
-title:"Codeforces",
-desc:"Rating 1250+ | Pupil",
-link:"https://codeforces.com/profile/hunter_148"
-},
-{
-title:"Codolio",
-desc:"Code Quality & Performance",
-link:"https://codolio.com/profile/hunter_148"
-}
-]
+const stats = [
+  {
+    title: "LeetCode",
+    desc: "Rating 1850+ | 1400+ problems",
+    link: "https://leetcode.com/u/hunter_148",
+  },
+  {
+    title: "Codeforces",
+    desc: "Rating 1250+ | Pupil",
+    link: "https://codeforces.com/profile/hunter_148",
+  },
+  {
+    title: "Codolio",
+    desc: "Code Quality & Performance",
+    link: "https://codolio.com/profile/hunter_148",
+  },
+];
 
+export default function Stats() {
+  return (
+    <section className="section">
+      <SectionHeader
+        title="Coding Profiles"
+        glow
+        description="Where I practice, compete, and track my problem-solving progress."
+      />
 
-return(
-
-<section className="section">
-
-<div className="w-full max-w-6xl mx-auto px-4 sm:px-0">
-
-<h2 className="text-center mb-6 glow">
-
-Coding Profiles
-
-</h2>
-
-<p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-Where I practice, compete, and track my problem-solving progress.
-</p>
-
-<div className="grid md:grid-cols-3 gap-8">
-
-{stats.map((s,i)=>(
-<a 
-href={s.link}
-target="_blank"
-rel="noopener noreferrer"
-key={i}
-className="card glow-border hover-lift text-center h-full flex flex-col justify-center gap-4"
->
-
-<h3 className="text-xl md:text-2xl font-semibold text-green-400 mb-0">
-{s.title}
-</h3>
-
-<p className="text-gray-400 text-sm md:text-base mb-0">
-{s.desc}
-</p>
-
-</a>
-))}
-
-</div>
-
-</div>
-
-</section>
-
-)
-
+      <motion.div
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        variants={staggerContainer}
+      >
+        {stats.map((s) => (
+          <motion.a
+            key={s.title}
+            href={s.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card flex flex-col items-center text-center gap-3 py-8 group"
+            variants={fadeUp}
+          >
+            <h3 className="text-accent">{s.title}</h3>
+            <p className="text-sm text-[var(--text-muted)]">{s.desc}</p>
+          </motion.a>
+        ))}
+      </motion.div>
+    </section>
+  );
 }

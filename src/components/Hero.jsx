@@ -1,125 +1,119 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaCode } from "react-icons/fa";
+import { FaGithub, FaCode, FaDownload } from "react-icons/fa";
+import { fadeUp, staggerContainer } from "../hooks/useScrollReveal";
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
   return (
-    <motion.section 
+    <motion.section
       id="hero"
-      className="section relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden"
+      className="section relative w-full min-h-[calc(100vh-5rem)] flex items-center overflow-hidden"
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={staggerContainer}
     >
-      {/* Animated background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+      {/* Local ambient glow */}
+      <div
+        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full pointer-events-none opacity-40"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(124, 255, 77, 0.1) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute bottom-1/4 -right-32 w-[28rem] h-[28rem] rounded-full pointer-events-none opacity-30"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(124, 255, 77, 0.08) 0%, transparent 70%)",
+        }}
+      />
 
-      <div className="w-full max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10 px-4 sm:px-6">
+      <div className="w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
         {/* Text Content */}
-        <motion.div className="space-y-8" variants={itemVariants}>
-          <motion.div variants={itemVariants}>
-            <p className="text-green-400 font-semibold text-xs sm:text-sm mb-2 tracking-wide uppercase">Welcome to my portfolio</p>
+        <motion.div className="flex flex-col gap-6" variants={fadeUp}>
+          <div>
+            <p className="label mb-3">Welcome to my portfolio</p>
             <h1>
-              Hi, I'm <span className="glow">Aditya Gupta</span>
+              Hi, I&apos;m <span className="glow">Aditya Gupta</span>
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.p 
-            className="text-gray-400 leading-relaxed"
-            variants={itemVariants}
-          >
+          <motion.p className="text-[var(--text-secondary)] text-lg max-w-lg" variants={fadeUp}>
             Full-Stack Developer crafting modern web experiences with React & TailwindCSS. Passionate about competitive programming, clean code, and building scalable solutions.
           </motion.p>
 
-          <motion.p 
-            className="text-gray-500"
-            variants={itemVariants}
-          >
+          <motion.p className="text-[var(--text-muted)] text-sm text-mono" variants={fadeUp}>
             B.Tech CSE @ IIIT Trichy | Problem Solver | Open Source Contributor
           </motion.p>
 
-          <motion.div 
-            className="flex gap-6 flex-wrap pt-8"
-            variants={itemVariants}
-          >
+          <motion.div className="flex flex-wrap gap-3 pt-2" variants={fadeUp}>
             <a
               href="https://github.com/makracoder"
               target="_blank"
               rel="noopener noreferrer"
-              className="neon-btn"
+              className="btn btn-primary"
             >
-              <FaGithub /> GitHub
+              <FaGithub size={15} />
+              GitHub
             </a>
-            <a
-              href="#projects"
-              className="neon-btn"
-            >
-              <FaCode /> View Work
+            <a href="#projects" className="btn btn-secondary">
+              <FaCode size={14} />
+              View Work
             </a>
             <a
               href="public/Aditya's Resume (2).pdf"
               download
-              className="neon-btn"
+              className="btn btn-ghost"
             >
+              <FaDownload size={13} />
               Download CV
             </a>
           </motion.div>
         </motion.div>
 
         {/* Profile Image */}
-        <motion.div 
-          className="flex justify-center"
-          variants={itemVariants}
-        >
+        <motion.div className="flex justify-center lg:justify-end" variants={fadeUp}>
           <motion.div
-            className="relative w-72 h-72"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="absolute inset-0 border border-green-500/40 rounded-full"></div>
-            <div className="absolute inset-4 border border-green-500/20 rounded-full"></div>
-            
-            <img
-              src="/profile_pic.jpg"
-              alt="Aditya Gupta"
-              className="w-full h-full object-cover rounded-full border-2 border-green-500/60"
+            {/* Outer ring */}
+            <div
+              className="absolute -inset-4 rounded-full opacity-60 hero-ring"
+              style={{
+                background:
+                  "conic-gradient(from 180deg, transparent, rgba(124, 255, 77, 0.3), transparent)",
+              }}
             />
+            <div className="absolute -inset-1 rounded-full border border-[var(--border-accent)]" />
+            <div className="absolute -inset-3 rounded-full border border-[var(--border)]" />
+
+            <div
+              className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden"
+              style={{ boxShadow: "var(--shadow-glow)" }}
+            >
+              <img
+                src="/profile_pic.jpg"
+                alt="Aditya Gupta"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="w-6 h-10 border-2 border-green-400/50 rounded-full flex justify-center">
+        <div className="scroll-indicator">
           <motion.div
-            className="w-1 h-2 bg-green-400 rounded-full mt-2"
-            animate={{ y: [0, 4, 0] }}
+            className="scroll-indicator-dot"
+            animate={{ y: [0, 6, 0], opacity: [1, 0.4, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-          ></motion.div>
+          />
         </div>
       </motion.div>
     </motion.section>

@@ -1,151 +1,123 @@
+import { motion } from "framer-motion";
 import { FaCode, FaLightbulb, FaUsers } from "react-icons/fa";
 import { IoRocketOutline } from "react-icons/io5";
+import SectionHeader from "./SectionHeader";
+import { fadeUp, staggerContainer, viewportOnce } from "../hooks/useScrollReveal";
+
+const features = [
+  {
+    icon: FaCode,
+    title: "Clean Code",
+    desc: "Writing maintainable and scalable code.",
+  },
+  {
+    icon: FaLightbulb,
+    title: "Problem Solving",
+    desc: "Tackling complex problems with strong logic.",
+  },
+  {
+    icon: IoRocketOutline,
+    title: "Performance",
+    desc: "Optimizing applications for speed and efficiency.",
+  },
+  {
+    icon: FaUsers,
+    title: "Collaboration",
+    desc: "Working effectively in teams.",
+  },
+];
 
 export default function About() {
   return (
     <section id="about" className="section">
+      <SectionHeader
+        title="About"
+        highlight="Me"
+        description="A passionate developer dedicated to building impactful software"
+      />
 
-      {/* Title */}
-      <div className="w-full max-w-5xl mx-auto text-center mb-16">
-        <h2 className="mb-4">
-          About <span className="text-yellow-400">Me</span>
-        </h2>
-
-        <p className="text-gray-400">
-          A passionate developer dedicated to building impactful software
-        </p>
-      </div>
-
-
-      <div className="w-full max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 sm:px-0">
-
-        {/* LEFT PROFILE CARD */}
-
-        <div className="card bg-slate-900/60">
-
+      <motion.div
+        className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        variants={staggerContainer}
+      >
+        {/* Profile Card */}
+        <motion.div className="card-static flex flex-col items-center text-center" variants={fadeUp}>
           <img
             src="plus38.jpeg"
-            className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full border-4 border-yellow-400 mb-8 object-cover"
+            alt="Aditya Gupta"
+            className="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover mb-6"
+            style={{
+              border: "2px solid var(--border-accent)",
+              boxShadow: "0 0 32px var(--neon-glow-soft)",
+            }}
           />
 
-          <div className="space-y-6 text-gray-300">
-
-            <p className="mb-0">
-              <span className="text-gray-500 text-sm">Education</span>
-              <br />
-              <span className="font-semibold text-gray-100">B.Tech @ IIIT Trichy</span>
-            </p>
-
-            <p className="mb-0">
-              <span className="text-gray-500 text-sm">Location</span>
-              <br />
-              <span className="text-gray-100">Kolkata, India</span>
-            </p>
-
-            {/* CGPA BAR */}
+          <div className="w-full flex flex-col gap-5 text-left">
+            <div>
+              <span className="label text-[var(--text-muted)] normal-case tracking-normal text-xs">
+                Education
+              </span>
+              <p className="font-semibold text-[var(--text-primary)] mt-1">
+                B.Tech @ IIIT Trichy
+              </p>
+            </div>
 
             <div>
-              <div className="flex justify-between mb-2">
-                <span className="text-gray-400 text-sm">CGPA</span>
-                <span className="text-white font-semibold">8.45</span>
-              </div>
-
-              <div className="w-full bg-gray-700 h-2.5 rounded-full overflow-hidden">
-                <div className="bg-yellow-400 h-full rounded-full w-[85%]"></div>
-              </div>
+              <span className="label text-[var(--text-muted)] normal-case tracking-normal text-xs">
+                Location
+              </span>
+              <p className="text-[var(--text-primary)] mt-1">Kolkata, India</p>
             </div>
 
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm text-[var(--text-muted)]">CGPA</span>
+                <span className="font-semibold text-[var(--text-primary)]">8.45</span>
+              </div>
+              <div className="progress-track">
+                <div className="progress-fill" style={{ width: "84.5%" }} />
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
-
-        {/* RIGHT CONTENT */}
-
-        <div className="px-4 sm:px-0">
-
-          <h3 className="text-2xl font-semibold mb-6">
-            My Journey
-          </h3>
-
-          <p className="text-gray-400 mb-6">
-            I'm Aditya Gupta, currently pursuing B.Tech in Computer Science at
-            IIIT Trichy. I enjoy solving challenging problems and building
-            scalable web applications.
-          </p>
-
-          <p className="text-gray-400 mb-12">
-            I have solved <b>1400+</b> problems across competitive programming
-            platforms and achieved Knight rating on LeetCode. I secured 
-           <b> AIR 7</b>  in <b>UPSC NDA 2023</b> demonstrating strong discipline and
-            analytical thinking.
-          </p>
-
-
-          {/* FEATURE CARDS */}
-
-          <div className="grid md:grid-cols-2 gap-6">
-
-            <div className="bg-slate-900 p-6 rounded-xl flex gap-4 items-start hover:scale-105 transition">
-
-              <FaCode className="text-yellow-400 text-xl flex-shrink-0 mt-1" />
-
-              <div>
-                <h4 className="font-semibold mb-2">Clean Code</h4>
-                <p className="text-gray-400 text-sm mb-0">
-                  Writing maintainable and scalable code.
-                </p>
-              </div>
-
+        {/* Journey Content */}
+        <motion.div className="flex flex-col gap-8" variants={fadeUp}>
+          <div>
+            <h3 className="mb-4">My Journey</h3>
+            <div className="flex flex-col gap-4">
+              <p className="text-[var(--text-secondary)]">
+                I&apos;m Aditya Gupta, currently pursuing B.Tech in Computer Science at
+                IIIT Trichy. I enjoy solving challenging problems and building
+                scalable web applications.
+              </p>
+              <p className="text-[var(--text-secondary)]">
+                I have solved <b className="text-[var(--text-primary)] font-semibold">1400+</b> problems across competitive programming
+                platforms and achieved Knight rating on LeetCode. I secured
+                <b className="text-[var(--text-primary)] font-semibold"> AIR 7</b> in <b className="text-[var(--text-primary)] font-semibold">UPSC NDA 2023</b> demonstrating strong discipline and
+                analytical thinking.
+              </p>
             </div>
-
-
-            <div className="bg-slate-900 p-6 rounded-xl flex gap-4 items-start hover:scale-105 transition">
-
-              <FaLightbulb className="text-yellow-400 text-xl flex-shrink-0 mt-1" />
-
-              <div>
-                <h4 className="font-semibold mb-2">Problem Solving</h4>
-                <p className="text-gray-400 text-sm mb-0">
-                  Tackling complex problems with strong logic.
-                </p>
-              </div>
-
-            </div>
-
-
-            <div className="bg-slate-900 p-6 rounded-xl flex gap-4 items-start hover:scale-105 transition">
-
-              <IoRocketOutline className="text-yellow-400 text-xl flex-shrink-0 mt-1" />
-
-              <div>
-                <h4 className="font-semibold mb-2">Performance</h4>
-                <p className="text-gray-400 text-sm mb-0">
-                  Optimizing applications for speed and efficiency.
-                </p>
-              </div>
-
-            </div>
-
-
-            <div className="bg-slate-900 p-6 rounded-xl flex gap-4 items-start hover:scale-105 transition">
-
-              <FaUsers className="text-yellow-400 text-xl flex-shrink-0 mt-1" />
-
-              <div>
-                <h4 className="font-semibold mb-2">Collaboration</h4>
-                <p className="text-gray-400 text-sm mb-0">
-                  Working effectively in teams.
-                </p>
-              </div>
-
-            </div>
-
           </div>
 
-        </div>
-
-      </div>
-
+          <div className="grid sm:grid-cols-2 gap-4">
+            {features.map((feature) => (
+              <div key={feature.title} className="card flex gap-4 items-start">
+                <div className="card-icon">
+                  <feature.icon />
+                </div>
+                <div>
+                  <h4 className="mb-1">{feature.title}</h4>
+                  <p className="text-sm text-[var(--text-muted)]">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -1,39 +1,28 @@
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Stats from "./components/Stats"
-import Projects from "./components/Projects"
-// import Achievements from "./components/Achievements"
-import Skills from "./components/Skills"
-import About from "./components/About"
-import Contact from "./components/Contact"
-function App(){
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Stats from "./components/Stats";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import BackgroundEffects from "./components/BackgroundEffects";
 
-return(
+function App() {
+  return (
+    <div className="relative w-full min-h-screen" style={{ background: "var(--bg-primary)" }}>
+      <BackgroundEffects />
+      <Navbar />
 
-<div className="w-full bg-gradient-to-b from-dark-bg via-dark-secondary to-black min-h-screen">
-
-<Navbar/>
-
-<main className="container-main pt-20 md:pt-32 pb-12 md:pb-16 space-y-32 md:space-y-40">
-
-  <Hero/>
-
-  <About/>
-
-  <Skills/>
-
-  <Stats/>
-
-  <Projects/>
-
-  <Contact/>
-
-</main>
-
-</div>
-
-)
-
+      <main className="container-main main-content section-stack">
+        <Hero />
+        <About />
+        <Skills />
+        <Stats />
+        <Projects />
+        <Contact />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
