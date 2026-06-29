@@ -2,10 +2,10 @@ export default function Projects(){
 
 const projects=[
 {
-name:"PokéFinder",
-desc:"Explore Pokémon using PokeAPI",
-live:"https://pokemon-app-ebon-eta.vercel.app/",
-github:"https://github.com/makracoder/PokemonAPP"
+name:"Eventora",
+desc:"Event management app",
+live:"https://eventora-event-management-platform.vercel.app/",
+github:"https://github.com/makracoder/Eventora-Event-Management-Platform"
 },
 {
 name:"CineWatch",
