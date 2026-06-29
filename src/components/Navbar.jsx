@@ -4,8 +4,9 @@ import { FaGithub, FaBars, FaTimes } from "react-icons/fa";
 const navLinks = [
   { href: "#", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
